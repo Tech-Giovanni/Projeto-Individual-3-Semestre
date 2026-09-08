@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS avaliacao (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    peso DOUBLE NOT NULL,
+    altura DOUBLE NOT NULL,
+    objetivo VARCHAR(255) NOT NULL,
+    imc DOUBLE NOT NULL,
+    recomendacao VARCHAR(255) NOT NULL
+    );
