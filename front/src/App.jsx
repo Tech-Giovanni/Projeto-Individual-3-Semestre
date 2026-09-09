@@ -32,18 +32,16 @@ function App() {
     evento.preventDefault();
 
     const novaAvaliacao = {
-      nome: nome,
+      nome,
       peso: parseFloat(peso),
       altura: parseFloat(altura),
-      objetivo: objetivo
+      objetivo
     };
 
     try {
       const resposta = await fetch(URL_API, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(novaAvaliacao)
       });
 
@@ -54,7 +52,7 @@ function App() {
         setObjetivo('');
         carregarAvaliacoes();
       } else {
-        alert('Erro ao cadastrar. Verifique se os dados são válidos.');
+        alert('Erro ao cadastrar. Verifique os valores informados.');
       }
     } catch (erro) {
       console.error('Erro ao enviar avaliação:', erro);
@@ -105,9 +103,9 @@ function App() {
         </button>
       </form>
 
-      <h2 className={styles.subtitulo}>Histórico de Avaliações</h2>
+      <h2>Histórico de Avaliações</h2>
       {avaliacoes.length === 0 ? (
-        <p className={styles.avisoVazio}>Nenhuma avaliação cadastrada até o momento.</p>
+        <p>Nenhuma avaliação cadastrada até o momento.</p>
       ) : (
         <table className={styles.tabela}>
           <thead>
