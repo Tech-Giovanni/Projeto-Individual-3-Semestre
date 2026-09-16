@@ -3,13 +3,13 @@ Olá! Este repositório é um pequeno projeto meu relacionado á um desafio da f
 
 
 Markdown
-# 🏋️‍♂️ Sistema de Avaliação Física & Prescrição de Treino
+#  Sistema de Avaliação Física & Prescrição de Treino
 
 Projeto individual semestral desenvolvido para o curso de Análise e Desenvolvimento de Sistemas da **SPTech**. O sistema integra um back-end robusto em Java com persistência relacional a uma interface web reativa em React, processando dados biométricos e gerando recomendações personalizadas.
 
 ---
 
-## 💻 Sobre a Aplicação
+##  Sobre a Aplicação
 
 A plataforma permite que academias ou personal trainers realizem avaliações físicas cadastrando peso, altura e objetivo do aluno. O back-end recebe as informações, calcula o **IMC (Índice de Massa Corporal)** e determina de forma automatizada uma **recomendação de treino** personalizada de acordo com as faixas de composição corporal e objetivos informados.
 
@@ -34,7 +34,7 @@ Projeto-Individual-3-Semestre/
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 ### Back-end
 - **Java 17+**
@@ -77,7 +77,7 @@ JSON
   "imc": 26.43,
   "recomendacao": "Treino combinado de força com blocos metabólicos e aeróbicos"
 }
-🚀 Como Executar o Projeto Localmente
+ Como Executar o Projeto Localmente
 1. Pré-requisitos
 Java JDK 17+ instalado e configurado nas variáveis de ambiente.
 
@@ -118,7 +118,7 @@ Bash
 npm run dev
 Abra a URL fornecida no terminal no seu navegador (geralmente http://localhost:5173).
 
-📸 Demonstração de Funcionamento
+Demonstração de Funcionamento
 Formulário preenchido com dados do aluno e tabela preenchida com o cálculo e recomendação retornados pelo Java:
 
 (Dica: salve seu print dentro da pasta front/src/assets com o nome evidencia_tela.png para aparecer aqui no GitHub)
