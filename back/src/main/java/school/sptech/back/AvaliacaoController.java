@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin()
@@ -51,7 +52,6 @@ public class AvaliacaoController {
         double imcCalculado = avaliacao.getPeso() / (avaliacao.getAltura() * avaliacao.getAltura());
         avaliacao.setImc(Math.round(imcCalculado * 100.0) / 100.0);
 
-        // Regra de Negócio: Recomendação de Treino da Academia baseada no IMC
         if (imcCalculado < 18.5) {
             avaliacao.setRecomendacao("Treino de adaptação neuromuscular com foco em ganho de massa magra");
         } else if (imcCalculado < 25.0) {
@@ -75,4 +75,18 @@ public class AvaliacaoController {
 
         return ResponseEntity.status(201).body(avaliacao);
     }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deletarHistorico(){
+
+        String sql = "DELETE FROM avaliacao";
+
+            int linhasAfetadas = jdbcTemplate.update(sql);
+
+            if (linhasAfetadas == 0) {
+                return ResponseEntity.status(404).build();
+            }
+            return ResponseEntity.status(204).build();
+        }
+
 }

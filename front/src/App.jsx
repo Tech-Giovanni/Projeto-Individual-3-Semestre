@@ -59,6 +59,29 @@ function App() {
     }
   }
 
+  async function limparHistorico() {
+    if (avaliacoes.length === 0) {
+      alert('O histórico já está vazio.');
+      return;
+    }
+
+    try {
+      const resposta = await fetch(URL_API, {
+        method: 'DELETE'
+      });
+
+      if (resposta.status === 204) {
+        setAvaliacoes([]);
+      } else if (resposta.status === 404) {
+        alert('Nenhum registro encontrado para excluir.');
+      } else {
+        alert('Erro ao limpar histórico.');
+      }
+    } catch (erro) {
+      console.error('Erro ao deletar histórico:', erro);
+    }
+  }
+
   return (
     <div className={styles.container}>
       <h1 className={styles.titulo}>Avaliação Física - Academia</h1>
@@ -90,16 +113,24 @@ function App() {
           onChange={(e) => setAltura(e.target.value)}
           required
         />
-        <input
+
+        <select
           className={styles.input}
-          type="text"
-          placeholder="Objetivo (ex: Hipertrofia, Emagrecimento)"
           value={objetivo}
           onChange={(e) => setObjetivo(e.target.value)}
           required
-        />
+        >
+          <option value="" disabled>Selecione o seu objetivo...</option>
+          <option value="Hipertrofia">Hipertrofia (Ganho de Massa)</option>
+          <option value="Emagrecimento">Emagrecimento (Perda de Gordura)</option>
+          <option value="Condicionamento">Condicionamento Físico / Resistência</option>
+          <option value="Saude">Qualidade de Vida e Saúde</option>
+        </select>
         <button type="submit" className={styles.botao}>
           Cadastrar e Gerar Treino
+        </button>
+        <button onClick={limparHistorico} type='button' className={styles.botaob}>
+          Limpar Histórico
         </button>
       </form>
 
